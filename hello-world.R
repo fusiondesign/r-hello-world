@@ -1,5 +1,22 @@
 library(readr)
+library(plotly)
+packageVersion('plotly')
+
+Sys.setenv("plotly_username"="brianroyer")
+Sys.setenv("plotly_api_key"="aqzGuf2JwgHuDys3wack")
+
 us_500 <- read_csv("us-500.csv")
+
+p <- plot_ly(
+  x = c("giraffes", "orangutans", "monkeys"),
+  y = c(20, 14, 23),
+  name = "SF Zoo",
+  type = "bar"
+)
+
+# Create a shareable link to your chart
+# Set up API credentials: https://plot.ly/r/getting-started
+htmlwidgets::saveWidget(as_widget(p), "graph.html")
 
 # Returns user name from row
 get <- function(type, person) {
